@@ -1,4 +1,4 @@
-import { nHentai } from "../../../../Objects/Data_Source/nHentai";
+import { nHentai } from "../../../Objects/Data_Source/nHentai";
 import { expect } from "chai";
 
 describe("nHentaiWebService Test", () => {
