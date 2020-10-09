@@ -1,10 +1,8 @@
 import { Client, Message, User } from "discord.js";
 import { inject, injectable } from "inversify";
 import { TYPES } from "./types";
-import { TheWeebsDiscordID } from "./Models/Static/TheWeebsDiscordIDs";
 import { DanbooruCommandChain } from "./BotCommandChain/1stChain_Danbooru";
-import { CommandChain } from "./Models/Interfaces/CommandChain";
-import { SurfaceLevelExceptionHandler } from "./Objects/SurfaceLevelExceptionHandler";
+import { SurfaceLevelExceptionHandler } from "./Objects/Validators/SurfaceLevelExceptionHandler";
 import { HanakoSpeech } from "./Models/Static/HanakoSpeech";
 @injectable()
 export class Hanako {
@@ -48,7 +46,7 @@ export class Hanako {
             try {
                 if (msg.channel.type === "dm") {
                     //dm channel routine 
-                    msg.author.send("Sumimasen. I cant respond to DM message at the moment");
+                    msg.author.send("Sumimasen. I cant respond to DMs at the moment");
                 }
                 else if (msg.channel.type === "text") {
                     //text channel routine 
