@@ -1,7 +1,7 @@
 import { Message } from "discord.js";
 import { anything, instance, mock, verify } from "ts-mockito";
 import { expect } from "chai";
-import { checkIfR18 } from "../../../Objects/R18ChannelValidator";;
+import { checkIfR18 } from "../../../Objects/R18ChannelValidator";
 
 describe("R18ChannelValidator Unit Tests", () => {
     let mockedMessage : Message;
