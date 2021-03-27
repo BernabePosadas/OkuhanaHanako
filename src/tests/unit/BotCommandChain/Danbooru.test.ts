@@ -29,6 +29,7 @@ describe("DanbooruCommandChain Unit Tests", () => {
 
 
     describe("executeChain method", () => {
+        /*
         it("When method is called with command 'killmark', Should call Bow.shootMark() once", () => {
             // Arrange
             let command = "killmark";
@@ -83,6 +84,12 @@ describe("DanbooruCommandChain Unit Tests", () => {
             // Assert
             verify(mockedBow.useOugi(instanceMockedMessage)).once();
         });
+          
+
+        // This whas moved to another location. TODO : Remove and move this to DM Command Chain Test
+
+        
+        */
 
         it("When method is called with command 'danbooru', Should call Bow.doGenericDanbooruImageSearch() once", () => {
             // Arrange
