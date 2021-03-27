@@ -1,9 +1,9 @@
-import { CommandChain } from "../Models/Interfaces/CommandChain";
+import { CommandChain } from "../../Models/Interfaces/CommandChain";
 import { Message } from "discord.js";
-import { HanakoSpeech } from "../Models/Static/HanakoSpeech";
-import { MiscCommand } from "../Objects/Misc/MiscFuntions";
+import { HanakoSpeech } from "../../Models/Static/HanakoSpeech";
+import { MiscCommand } from "../../Objects/Misc/MiscFuntions";
 import { inject, injectable } from "inversify";
-import { TYPES } from "../types";
+import { TYPES } from "../../types";
 
 @injectable()
 export class BotMiscCommandChain implements CommandChain {

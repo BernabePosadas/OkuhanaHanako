@@ -1,6 +1,6 @@
 import { Message } from "discord.js";
 import { anything, instance, mock, verify } from "ts-mockito";
-import { MusicPlayerCommandChain } from "../../../BotCommandChain/3ndChain_MusicPlayer";
+import { MusicPlayerCommandChain } from "../../../BotCommandChain/Channel/3ndChain_MusicPlayer";
 import { IMusicControl } from "../../../Models/Interfaces/IMusicPlayerControl";
 import { MockCommandChain } from "../../mocks/MockCommandChain";
 

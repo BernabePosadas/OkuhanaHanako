@@ -1,6 +1,6 @@
 import { Message, MessageFlags } from "discord.js";
 import { anything, instance, mock, verify } from "ts-mockito";
-import { BotMiscCommandChain } from "../../../BotCommandChain/4thChain_Misc";
+import { BotMiscCommandChain } from "../../../BotCommandChain/Channel/4thChain_Misc";
 import { MiscCommand } from "../../../Objects/Misc/MiscFuntions";
 
 describe("BotMiscCommandChain Unit Test", () => {

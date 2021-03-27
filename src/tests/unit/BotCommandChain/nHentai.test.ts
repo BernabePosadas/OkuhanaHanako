@@ -1,6 +1,6 @@
 import { Message } from "discord.js";
 import { anything, instance, mock, verify } from "ts-mockito";
-import { nHentaiCommandChain } from "../../../BotCommandChain/2ndChain_nHentai";
+import { nHentaiCommandChain } from "../../../BotCommandChain/Channel/2ndChain_nHentai";
 import { nHentaiDoujin } from "../../../Objects/nHentaiDoujin/nHentaiDoujin";
 import { MockCommandChain } from "../../mocks/MockCommandChain";
 

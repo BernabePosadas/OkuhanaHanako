@@ -16,25 +16,22 @@ export class Bow {
         this._quiver = quiver;
     }
     public async shootBernabe(msg: Message) {
-        if (this.onWeebChannel(msg)) {
-            msg.channel.send(`<\@${TheWeebsDiscordID.bernabe}> ` + Shuffler.shuffleAndPickFromArray(HanakoSpeech.ARROW_SHOOT_SPEECHES));
-            msg.channel.send((await this._quiver.pickAnArrow("bernabe")).danbooru_link);
+        if (this.isTheAuthorBernabe(msg)) {
+            msg.author.send((await this._quiver.pickAnArrow("bernabe")).danbooru_link);
         }
     }
     public async shootMark(msg: Message) {
-        if (this.onWeebChannel(msg)) {
-            msg.channel.send(`<\@${TheWeebsDiscordID.mark}> ` + Shuffler.shuffleAndPickFromArray(HanakoSpeech.ARROW_SHOOT_SPEECHES));
-            msg.channel.send((await this._quiver.pickAnArrow("mark")).danbooru_link);
+        if (this.isTheAuthorBernabe(msg)) {
+            msg.author.send((await this._quiver.pickAnArrow("mark")).danbooru_link);
         }
     }
     public async shootIvan(msg: Message) {
-        if (this.onWeebChannel(msg)) {
-            msg.channel.send(`<\@${TheWeebsDiscordID.ivan}> ` + Shuffler.shuffleAndPickFromArray(HanakoSpeech.ARROW_SHOOT_SPEECHES));
-            msg.channel.send((await this._quiver.pickAnArrow("ivan")).danbooru_link);
+        if (this.isTheAuthorBernabe(msg)) {
+            msg.author.send((await this._quiver.pickAnArrow("ivan")).danbooru_link);
         }
     }
     public omakaseShoot(msg: Message) {
-        if (this.onWeebChannel(msg)) {
+        if (this.isTheAuthorBernabe(msg)) {
             var results: string = Shuffler.shuffleAndPickFromArray(["mark", "ivan", "me", "all", "chino"]);
             switch (results) {
                 case "me":
@@ -58,9 +55,8 @@ export class Bow {
         }
     }
     public async useOugi(msg: Message) {
-        if (this.onWeebChannel(msg)) {
-            msg.channel.send(HanakoSpeech.OUGI_SPEECH);
-            msg.channel.send((await this._quiver.pickAnArrow("chino")).danbooru_link);
+        if (this.isTheAuthorBernabe(msg)) {
+            msg.author.send((await this._quiver.pickAnArrow("chino")).danbooru_link);
         }
     }
     public async doGenericDanbooruImageSearch(msg: Message, searchFrom: string) {
@@ -95,23 +91,19 @@ export class Bow {
         }
         msg.channel.send(response);
     }
-    private onWeebChannel(msg: Message): boolean {
-            if (msg.channel.id != "677361288246198292" && msg.channel.id != "677361065327067136" && msg.guild?.id === "677136815894822922") {
-                msg.reply(HanakoSpeech.NOT_IN_WEEB_GENERAL_CHANNEL_SPEECH);
-                return false;
-            }
-            else if (msg.guild?.id != "677136815894822922") {
-                msg.reply(HanakoSpeech.NOT_IN_WEEB_SERVER);
-                return false;
-            }
-            return true;
+    private isTheAuthorBernabe(msg: Message): boolean {
+        if(msg.author.id === "432863364239196160"){    
+                return true;
+        }
+        return false;
+
     }
     private async shootAll(msg: Message) {
-        if (this.onWeebChannel(msg)) {
-            msg.channel.send(HanakoSpeech.SHOOT_ALL_SPEECH);
-            msg.channel.send((await this._quiver.pickAnArrow("bernabe")).danbooru_link);
-            msg.channel.send((await this._quiver.pickAnArrow("mark")).danbooru_link);
-            msg.channel.send((await this._quiver.pickAnArrow("ivan")).danbooru_link);
+        if (this.isTheAuthorBernabe(msg)) {
+            msg.author.send(HanakoSpeech.SHOOT_ALL_SPEECH);
+            msg.author.send((await this._quiver.pickAnArrow("bernabe")).danbooru_link);
+            msg.author.send((await this._quiver.pickAnArrow("mark")).danbooru_link);
+            msg.author.send((await this._quiver.pickAnArrow("ivan")).danbooru_link);
         }
     }
 }

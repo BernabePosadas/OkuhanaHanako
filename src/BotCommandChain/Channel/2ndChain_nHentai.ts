@@ -1,9 +1,9 @@
-import { CommandChain } from "../Models/Interfaces/CommandChain";
+import { CommandChain } from "../../Models/Interfaces/CommandChain";
 import { Message } from "discord.js";
-import { nHentaiDoujin } from "../Objects/nHentaiDoujin/nHentaiDoujin";
+import { nHentaiDoujin } from "../../Objects/nHentaiDoujin/nHentaiDoujin";
 import { MusicPlayerCommandChain } from "./3ndChain_MusicPlayer";
 import { inject, injectable } from "inversify";
-import { TYPES } from "../types";
+import { TYPES } from "../../types";
 
 @injectable()
 export class nHentaiCommandChain implements CommandChain{

@@ -2,7 +2,8 @@ import { Client, Message, User } from "discord.js";
 import { inject, injectable } from "inversify";
 import { TYPES } from "./types";
 import { TheWeebsDiscordID } from "./Models/Static/TheWeebsDiscordIDs";
-import { DanbooruCommandChain } from "./BotCommandChain/1stChain_Danbooru";
+import { DanbooruCommandChain } from "./BotCommandChain/Channel/1stChain_Danbooru";
+import { DanbooruDMCommandChain } from "./BotCommandChain/DMChains/1stChain_Danbooru";
 import { CommandChain } from "./Models/Interfaces/CommandChain";
 import { SurfaceLevelExceptionHandler } from "./Objects/SurfaceLevelExceptionHandler";
 import { HanakoSpeech } from "./Models/Static/HanakoSpeech";
@@ -12,16 +13,19 @@ export class Hanako {
     private readonly _token: string;
     private _prefix: string | undefined;
     private _danbooru_CommandChain : DanbooruCommandChain;
+    private _danbooru_DM_CommandChain : DanbooruDMCommandChain
     constructor(
         @inject(TYPES.Client) client: Client,
         @inject(TYPES.Token) token: string,
         @inject(TYPES.Command_Prefix) prefix: string | undefined,
-        @inject(TYPES.Danbooru_CommandChain) danbooru_CommandChain : DanbooruCommandChain
+        @inject(TYPES.Danbooru_CommandChain) danbooru_CommandChain : DanbooruCommandChain,
+        @inject(TYPES.Danbooru_DM_CommandChain) danbooru_DM_CommandChain : DanbooruDMCommandChain
     ) {
         this._client = client;
         this._token = token;
         this._prefix = prefix;
         this._danbooru_CommandChain = danbooru_CommandChain;
+        this._danbooru_DM_CommandChain = danbooru_DM_CommandChain;
     }
     public start(): Promise<string> {
 
@@ -48,7 +52,14 @@ export class Hanako {
             try {
                 if (msg.channel.type === "dm") {
                     //dm channel routine 
-                    msg.author.send("Sumimasen. I cant respond to DM message at the moment");
+                    if (prefix !== undefined) {
+                        if (!msg.content.startsWith(prefix) || msg.author.bot) {
+                            return;
+                        }
+                        const args: Array<string> = msg.content.slice(prefix.length).split(/ +/);
+                        const command: string = args[0].toLowerCase();
+                        this._danbooru_DM_CommandChain.executeChain(msg, command);
+                    }
                 }
                 else if (msg.channel.type === "text") {
                     //text channel routine 

@@ -94,7 +94,7 @@ export class Quiver{
         });
         return deck;
     }
-    public async pickAnArrow(person_to_shoot : string) : Promise<DanbooruPost>{
+    public async pickAnArrow(person_to_shoot : string) : Promise<DanbooruPost> {
         switch(person_to_shoot){
             case "bernabe": 
                 return await this._danbooru.fetchRandomImage(Shuffler.shuffleAndPickFromArray(this._bernabe_arrows), "danbooru");

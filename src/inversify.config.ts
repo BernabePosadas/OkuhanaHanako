@@ -9,11 +9,12 @@ import { Bow } from "./Objects/DanbooruImageRandomizer/Bow";
 import { MusicPlayerControl } from "./Objects/MusicPlayer/MusicPlayerControl";
 import { nHentai } from "./Objects/Data_Source/nHentai";
 import { nHentaiDoujin } from "./Objects/nHentaiDoujin/nHentaiDoujin";
-import { nHentaiCommandChain } from "./BotCommandChain/2ndChain_nHentai";
-import { DanbooruCommandChain } from "./BotCommandChain/1stChain_Danbooru";
+import { nHentaiCommandChain } from "./BotCommandChain/Channel/2ndChain_nHentai";
+import { DanbooruCommandChain } from "./BotCommandChain/Channel/1stChain_Danbooru";
 import { MiscCommand } from "./Objects/Misc/MiscFuntions";
-import { BotMiscCommandChain } from "./BotCommandChain/4thChain_Misc";
-import { MusicPlayerCommandChain } from "./BotCommandChain/3ndChain_MusicPlayer";
+import { BotMiscCommandChain } from "./BotCommandChain/Channel/4thChain_Misc";
+import { MusicPlayerCommandChain } from "./BotCommandChain/Channel/3ndChain_MusicPlayer";
+import { DanbooruDMCommandChain } from "./BotCommandChain/DMChains/1stChain_Danbooru";
 import { CommandChain } from "./Models/Interfaces/CommandChain";
 
 let container = new Container();
@@ -36,5 +37,6 @@ container.bind<CommandChain>(TYPES.NHentai_CommandChain).to(nHentaiCommandChain)
 container.bind<CommandChain>(TYPES.Danbooru_CommandChain).to(DanbooruCommandChain);
 container.bind<CommandChain>(TYPES.Music_CommandChain).to(MusicPlayerCommandChain);
 container.bind<CommandChain>(TYPES.Misc_CommandChain).to(BotMiscCommandChain);
+container.bind<DanbooruDMCommandChain>(TYPES.Danbooru_DM_CommandChain).to(DanbooruDMCommandChain);
 
 export default container;

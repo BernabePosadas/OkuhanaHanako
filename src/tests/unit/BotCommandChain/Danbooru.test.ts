@@ -1,6 +1,6 @@
 import { Message } from "discord.js";
 import { anything, instance, mock, verify } from "ts-mockito";
-import { DanbooruCommandChain } from "../../../BotCommandChain/1stChain_Danbooru";
+import { DanbooruCommandChain } from "../../../BotCommandChain/Channel/1stChain_Danbooru";
 import { Bow } from "../../../Objects/DanbooruImageRandomizer/Bow";
 import { MockCommandChain } from "../../mocks/MockCommandChain";
 

@@ -17,4 +17,5 @@ export const TYPES = {
     Music_CommandChain : Symbol.for("Music_CommandChain"),
     Misc_Command : Symbol.for("Misc_Command"),
     Misc_CommandChain : Symbol.for("Misc_CommandChain"),
+    Danbooru_DM_CommandChain : Symbol.for("Danbooru_DM_CommandChain"),
 };

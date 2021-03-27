@@ -5,12 +5,12 @@
 //                                                                                    /
 //************************************************************************************/
 
-import { CommandChain } from "../Models/Interfaces/CommandChain";
+import { CommandChain } from "../../Models/Interfaces/CommandChain";
 import { Message } from "discord.js";
-import { Bow } from "../Objects/DanbooruImageRandomizer/Bow";
+import { Bow } from "../../Objects/DanbooruImageRandomizer/Bow";
 import { nHentaiCommandChain } from "./2ndChain_nHentai";
-import container from "../inversify.config";
-import { TYPES } from "../types";
+import container from "../../inversify.config";
+import { TYPES } from "../../types";
 import { inject, injectable } from "inversify";
 
 @injectable()
@@ -26,21 +26,6 @@ export class DanbooruCommandChain implements CommandChain{
     } 
     public executeChain(msg : Message, command : string){
         switch (command) { 
-            case "killmark":
-                this._bow.shootMark(msg)
-                break;
-            case "killmaster":
-                this._bow.shootBernabe(msg);
-                break;
-            case "killivan":
-                this._bow.shootIvan(msg);
-                break;
-            case "omakaseshot":
-                this._bow.omakaseShoot(msg);
-                break;
-            case "ougi":
-                this._bow.useOugi(msg);
-                break;
             case "danbooru": 
                 this._bow.doGenericDanbooruImageSearch(msg, "danbooru");
                 break;
