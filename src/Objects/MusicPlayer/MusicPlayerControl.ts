@@ -57,8 +57,8 @@ export class MusicPlayerControl implements IMusicControl {
         try {
             var song_info = await ytdl.getInfo(args);
             var play_item: MusicPlayItem = {
-                title: song_info.title,
-                youtube_link: song_info.video_url,
+                title: song_info.player_response.videoDetails.title,
+                youtube_link: song_info.videoDetails.video_url,
                 thumbnail: song_info.player_response.videoDetails.thumbnail.thumbnails[song_info.player_response.videoDetails.thumbnail.thumbnails.length - 1].url,
                 requested_by: msg.member?.id,
                 anounce_message: undefined,

@@ -1,4 +1,4 @@
 
 export interface DanbooruPost{ 
-    danbooru_link : string | undefined;
+    danbooru_link : string;
 }

@@ -3,7 +3,6 @@ import { TYPES } from "../../types";
 import { Shuffler } from "./../Shuffle";
 import { Quiver } from "./Quiver";
 import { Message } from "discord.js";
-import { TheWeebsDiscordID } from "../../Models/Static/TheWeebsDiscordIDs";
 import { HanakoSpeech } from "../../Models/Static/HanakoSpeech";
 import { checkIfR18 } from "./../R18ChannelValidator";
 
