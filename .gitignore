@@ -1,7 +1,8 @@
 /node_modules
-/bin
+/bin/*
+!/bin/static-pages/
+!/bin/static-pages/*
 /.nyc_output
 /coverage
 .env
 /logs/exception_stack_trace.txt
-
