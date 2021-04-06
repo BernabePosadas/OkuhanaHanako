@@ -34,7 +34,8 @@ export class MusicPlayerControl implements IMusicControl {
     }
 
     public async addToQueue(msg: Message): Promise<void> {
-        var args: string = msg.content.substring(6).toString().trim();
+        const argss: Array<string> = msg.content.slice(1).split(/ +/); // TODO : depend on prefix global variable on slice length in this case. temporary solution
+        var args: string = msg.content.substring(argss[0].length + 2).toString().trim();
         if (args.length === 0) {
             msg.reply(HanakoSpeech.EMPTY_ARGUMENT);
             return;

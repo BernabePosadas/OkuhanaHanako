@@ -23,7 +23,8 @@ export class nHentaiDoujin{
         if(!checkIfR18(msg)){
             return;
         }
-        var codeString = msg.content.substring(12).toString().trim();
+        const args: Array<string> = msg.content.slice(1).split(/ +/); // TODO : depend on prefix global variable on slice length in this case. temporary solution
+        var codeString = msg.content.substring(args[0].length + 2).toString().trim();
         if(codeString.length === 0){
             msg.reply(HanakoSpeech.EMPTY_ARGUMENT);
             return;

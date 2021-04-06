@@ -34,7 +34,7 @@ Currently it set only to be invited by me only. I may or may not set it for publ
     - `!pause` - pause the currently playing song
     - `!resume` - resume the paused song
     - `!stop` - stops the player and remove all items in queue
-    - `!togglerepeate` - toggle repeat status of the song
+    - `!togglerepeat` - toggle repeat status of the song
     - `!back` - go back to previously played song 
 3) Misc commands
    - `!launchnuke <code>` - will display nHentai doujin basic information when given a nHenati doujin ID(or weebs call it nuke codes) 

@@ -7,6 +7,7 @@ import { DanbooruDMCommandChain } from "./BotCommandChain/DMChains/1stChain_Danb
 import { CommandChain } from "./Models/Interfaces/CommandChain";
 import { SurfaceLevelExceptionHandler } from "./Objects/SurfaceLevelExceptionHandler";
 import { HanakoSpeech } from "./Models/Static/HanakoSpeech";
+import { ShorthandDictionaryHandler } from "./Objects/ShorthandDictionaries/ShorthandDictionaryHandler";
 @injectable()
 export class Hanako {
     private _client: Client;
@@ -68,7 +69,8 @@ export class Hanako {
                             return;
                         }
                         const args: Array<string> = msg.content.slice(prefix.length).split(/ +/);
-                        const command: string = args[0].toLowerCase();
+                        let shorthand_dictionary = new ShorthandDictionaryHandler();
+                        const command: string =  shorthand_dictionary.findEquivalentShorthand(args[0].toLowerCase().trim());
                         this._danbooru_CommandChain.executeChain(msg, command);
                     }
                 }
