@@ -5,24 +5,22 @@
 //                                                                                    /
 //************************************************************************************/
 
-import { CommandChain } from "../../Models/Interfaces/CommandChain";
 import { Message } from "discord.js";
 import { Bow } from "../../Objects/DanbooruImageRandomizer/Bow";
-import container from "../../inversify.config";
 import { TYPES } from "../../types";
 import { inject, injectable } from "inversify";
 import { HanakoSpeech } from "../../Models/Static/HanakoSpeech";
 
 @injectable()
-export class DanbooruDMCommandChain{
-    private _bow : Bow;
+export class DanbooruDMCommandChain {
+    private _bow: Bow;
     constructor(
-        @inject(TYPES.Bow) bow : Bow,
-    ){
-       this._bow = bow;
-    } 
-    public executeChain(msg : Message, command : string){
-        switch (command) { 
+        @inject(TYPES.Bow) bow: Bow,
+    ) {
+        this._bow = bow;
+    }
+    public executeChain(msg: Message, command: string) {
+        switch (command) {
             case "killmark":
                 this._bow.shootMark(msg)
                 break;
@@ -37,6 +35,9 @@ export class DanbooruDMCommandChain{
                 break;
             case "ougi":
                 this._bow.useOugi(msg);
+                break;
+            case "kokoroomoi":
+                this._bow.kokoroOmoiNoIshi(msg);
                 break;
             default:
                 msg.author.send(HanakoSpeech.COMMAND_INVALID);

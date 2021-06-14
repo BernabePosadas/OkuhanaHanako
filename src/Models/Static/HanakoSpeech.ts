@@ -29,4 +29,9 @@ export class HanakoSpeech {
     public static NHENTAI_MAX_QUERY_REACHED : string = "Sumimasen. To avoid HTTP request spam to nhentai.net, master decided to limit the query up to " + process.env.NHENTAI_MAX_CODES + " code(s) per request. Please try again with fewer codes (^-^)";
     public static EMPTY_ARGUMENT : string = "Sumimasen. I cant process your request due to empty argument/query. Please type "+ process.env.COMMAND_PREFIX + "help to learn how to use the bot commands";
     public static INVALID_URL : string = "Sumimasen. The URL provided is not a valid youtube URL. Please try again with a valid URL (^-^)";
+    public static GREETING_MESSAGE_1 : string = "Welcome ";
+    public static GREETING_MESSAGE_2 : string = ". Enjoy your stay (^-^)";
+    public static SERVER_BOOST_MESSAGE_1 : string = "Thank you, ";
+    public static SERVER_BOOST_MESSAGE_2 : string = ". For boosting the server. (^-^)"
+
 }

@@ -1,8 +1,6 @@
 import { CommandChain } from "../../Models/Interfaces/CommandChain";
 import { Message } from "discord.js";
-import { MusicPlayerControl } from "../../Objects/MusicPlayer/MusicPlayerControl";
 import { IMusicControl } from "../../Models/Interfaces/IMusicPlayerControl";
-import container from "../../inversify.config";
 import { TYPES } from "../../types";
 import { inject, injectable } from "inversify";
 

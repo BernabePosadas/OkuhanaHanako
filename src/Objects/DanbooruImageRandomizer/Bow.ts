@@ -58,6 +58,11 @@ export class Bow {
             msg.author.send((await this._quiver.pickAnArrow("chino")).danbooru_link);
         }
     }
+    public async kokoroOmoiNoIshi(msg: Message) { // ココロ想いの意志 (The will of kokoro omoi). Made up word for me to just simply send random kokkoro pics 
+        if (this.isTheAuthorBernabe(msg)) {
+            msg.author.send((await this._quiver.pickAnArrow("kokoroomoi")).danbooru_link);
+        }
+    }
     public async doGenericDanbooruImageSearch(msg: Message, searchFrom: string) {
         const args: Array<string> = msg.content.slice("!".length).split(/ +/);
         args.shift();

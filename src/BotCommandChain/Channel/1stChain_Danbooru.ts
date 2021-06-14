@@ -8,8 +8,6 @@
 import { CommandChain } from "../../Models/Interfaces/CommandChain";
 import { Message } from "discord.js";
 import { Bow } from "../../Objects/DanbooruImageRandomizer/Bow";
-import { nHentaiCommandChain } from "./2ndChain_nHentai";
-import container from "../../inversify.config";
 import { TYPES } from "../../types";
 import { inject, injectable } from "inversify";
 

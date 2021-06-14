@@ -1,7 +1,6 @@
 import { CommandChain } from "../../Models/Interfaces/CommandChain";
 import { Message } from "discord.js";
 import { nHentaiDoujin } from "../../Objects/nHentaiDoujin/nHentaiDoujin";
-import { MusicPlayerCommandChain } from "./3ndChain_MusicPlayer";
 import { inject, injectable } from "inversify";
 import { TYPES } from "../../types";
 

@@ -57,6 +57,7 @@ export class nHentaiDoujin{
                             .addField("Character: ", this.displayTags("character"))
                             .addField("Parody: ", this.displayTags("parody"))
                             .addField("Language: ", this.displayTags("language"))
+                            .addField("Date Uploaded: ", this.unixToDataString(this._doujin.upload_date))
                             .addField(`${this._doujin.images.pages.length} pages`, `[View on nHentai](https://nhentai.net/g/${this._doujin.id})`, true);
                         msg.channel.send(DetailMessageEmbed);
                     }
@@ -100,5 +101,10 @@ export class nHentaiDoujin{
                 .addField("Tags(All) : ", tagList.trim())
             msg.channel.send(DetailMessageEmbed);
         }
+    }
+    private unixToDataString(timestamp : number) : string{
+        let date = new Date(timestamp*1000);
+        return date.toString();
+        
     }
 }

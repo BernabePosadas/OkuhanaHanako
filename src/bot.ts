@@ -1,4 +1,4 @@
-import { Client, Message, User } from "discord.js";
+import { Client, GuildChannel, Message, TextChannel, User } from "discord.js";
 import { inject, injectable } from "inversify";
 import { TYPES } from "./types";
 import { TheWeebsDiscordID } from "./Models/Static/TheWeebsDiscordIDs";
@@ -13,14 +13,14 @@ export class Hanako {
     private _client: Client;
     private readonly _token: string;
     private _prefix: string | undefined;
-    private _danbooru_CommandChain : DanbooruCommandChain;
-    private _danbooru_DM_CommandChain : DanbooruDMCommandChain
+    private _danbooru_CommandChain: DanbooruCommandChain;
+    private _danbooru_DM_CommandChain: DanbooruDMCommandChain
     constructor(
         @inject(TYPES.Client) client: Client,
         @inject(TYPES.Token) token: string,
         @inject(TYPES.Command_Prefix) prefix: string | undefined,
-        @inject(TYPES.Danbooru_CommandChain) danbooru_CommandChain : DanbooruCommandChain,
-        @inject(TYPES.Danbooru_DM_CommandChain) danbooru_DM_CommandChain : DanbooruDMCommandChain
+        @inject(TYPES.Danbooru_CommandChain) danbooru_CommandChain: DanbooruCommandChain,
+        @inject(TYPES.Danbooru_DM_CommandChain) danbooru_DM_CommandChain: DanbooruDMCommandChain
     ) {
         this._client = client;
         this._token = token;
@@ -32,7 +32,7 @@ export class Hanako {
 
         //Hanako's Task List
         this.lisenToMessage();
-
+        this.listenToSystemEvents();
         //set her default activity
         this._client.on("ready", () => {
             try {
@@ -46,6 +46,22 @@ export class Hanako {
         //Readies herself and log to discord.
         return this._client.login(this._token);
 
+    }
+    private listenToSystemEvents() {
+        this._client.on("guildMemberAdd", member => {
+            let ch = member.guild.channels.cache.find(ch => ch.name === "landing-general");
+            if (ch) {
+                (ch as TextChannel).send(HanakoSpeech.GREETING_MESSAGE_1 + "<@" + member + ">" + HanakoSpeech.GREETING_MESSAGE_2);
+            }
+        });
+        this._client.on('guildMemberUpdate', (oldMember, newMember) => {
+            if (oldMember.premiumSinceTimestamp !== newMember.premiumSinceTimestamp) {
+                let ch = newMember.guild.channels.cache.find(ch => ch.name === "landing-general");
+                if (ch) {
+                    (ch as TextChannel).send(HanakoSpeech.SERVER_BOOST_MESSAGE_1 + "<@" + newMember + ">" + HanakoSpeech.SERVER_BOOST_MESSAGE_2);
+                }
+            }
+        });
     }
     private lisenToMessage() {
         var prefix: string | undefined = this._prefix;
@@ -70,7 +86,7 @@ export class Hanako {
                         }
                         const args: Array<string> = msg.content.slice(prefix.length).split(/ +/);
                         let shorthand_dictionary = new ShorthandDictionaryHandler();
-                        const command: string =  shorthand_dictionary.findEquivalentShorthand(args[0].toLowerCase().trim());
+                        const command: string = shorthand_dictionary.findEquivalentShorthand(args[0].toLowerCase().trim());
                         this._danbooru_CommandChain.executeChain(msg, command);
                     }
                 }
