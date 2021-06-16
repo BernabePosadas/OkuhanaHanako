@@ -7,6 +7,7 @@ import logger from "morgan";
 import favicon from 'serve-favicon';
 const app = exp();
 import path from "path";
+import schedule, { scheduleJob } from 'node-schedule';
 
 //region attributes
 const port = process.env.PORT || 3000;
@@ -32,4 +33,6 @@ bot.start().then(() => {
   console.log('Hanako scrapped her knee: ', error);
 });
 
-
+schedule.scheduleJob('0 4 * * *', function() {
+  bot.runGenshinCheckIn();
+});

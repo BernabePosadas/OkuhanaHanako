@@ -8,6 +8,8 @@ import { CommandChain } from "./Models/Interfaces/CommandChain";
 import { SurfaceLevelExceptionHandler } from "./Objects/SurfaceLevelExceptionHandler";
 import { HanakoSpeech } from "./Models/Static/HanakoSpeech";
 import { ShorthandDictionaryHandler } from "./Objects/ShorthandDictionaries/ShorthandDictionaryHandler";
+import { GenshinCommunityLogin } from "./Objects/Data_Source/GenshinmiHoYoCommunityLogin";
+
 @injectable()
 export class Hanako {
     private _client: Client;
@@ -46,6 +48,12 @@ export class Hanako {
         //Readies herself and log to discord.
         return this._client.login(this._token);
 
+    }
+    public async runGenshinCheckIn(){
+        let comm_login = new GenshinCommunityLogin();
+        let message = await comm_login.runCheckIn();
+        this.sendDM(String(TheWeebsDiscordID.bernabe), HanakoSpeech.CHECK_IN_MESSAGE_HEADER);
+        this.sendDM(String(TheWeebsDiscordID.bernabe), message);
     }
     private listenToSystemEvents() {
         this._client.on("guildMemberAdd", member => {
@@ -125,5 +133,9 @@ export class Hanako {
     public async sendErrorAsPrivateMessage(discord_id: string, message: string) {
         var user: User = await this._client.users.fetch(discord_id);
         user.send(message, { files: ["./logs/exception_stack_trace.txt"] });
+    }
+    public async sendDM(discord_id: string, message: string) {
+        var user: User = await this._client.users.fetch(discord_id);
+        user.send(message);
     }
 }
