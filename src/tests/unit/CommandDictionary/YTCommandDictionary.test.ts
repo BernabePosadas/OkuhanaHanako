@@ -112,4 +112,19 @@ describe("YTCommandDictionary Test", () => {
         });
         
     });
+    describe("command 'list'", () => {
+        it("should searching for general command result to true and resulting general command is 'playlist'", async () => {
+            // Arrange 
+            let command = "list";
+
+            // Act 
+            let result = YTCommandDictionary.searchEquivalent(command);
+
+            // Assert
+            expect(result).to.equal(true);
+            expect(YTCommandDictionary.getEquivalent()).to.equal("playlist");
+
+        });
+        
+    });
 });

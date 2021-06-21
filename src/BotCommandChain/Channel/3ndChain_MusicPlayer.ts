@@ -38,6 +38,9 @@ export class MusicPlayerCommandChain implements CommandChain{
             case "togglerepeat":
                 this._music_player_control.handleOtherMusicCommands(msg, "repeat");
                 break;
+            case "playlist" : 
+                this._music_player_control.handleOtherMusicCommands(msg, "playlist");
+                break;
             default:
                 this._next_command_chain.executeChain(msg, command);
                 break;

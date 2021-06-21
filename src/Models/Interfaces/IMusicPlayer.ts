@@ -16,4 +16,5 @@ export interface IMusicPlayer{
     resumePlayer() : boolean;
     previous() : boolean;
     toggleRepeat() : boolean;
+    printList() : string | undefined;
 }

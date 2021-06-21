@@ -104,6 +104,16 @@ describe("MusicPlayerCommandChain Unit Tests", () => {
             // Assert
             verify(mockedControl.handleOtherMusicCommands(instanceMockedMessage, anything())).once();
         });
+        it("When method is called with command 'togglerepeat', Should call IMusicControl.handleOtherMusicCommands() once", () => {
+            // Arrange
+            let command = "playlist";
+
+            // Act
+            sut.executeChain(instanceMockedMessage, command);
+
+            // Assert
+            verify(mockedControl.handleOtherMusicCommands(instanceMockedMessage, anything())).once();
+        });
 
         it("When method is called with invalid command, Should call CommandChain.executeChain() once", () => {
             // Arrange

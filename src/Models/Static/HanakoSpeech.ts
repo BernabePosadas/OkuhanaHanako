@@ -36,7 +36,7 @@ export class HanakoSpeech {
     public static CHECK_IN_MESSAGE_1 : string = "Yay (^-^). Successfully checked in today.";
     public static CHECK_IN_MESSAGE_2 : string = " was today's reward." ;
     public static CHECK_IN_MESSAGE_HEADER : string = "Hello, this is Genshin Check-In Auto Service";
-    public static ERROR_CHECK_IN_MESSAGE_1 : string = "Aww (T-T). Checking was successful but I was unable to fetch the reward data"; 
+    public static ERROR_CHECK_IN_MESSAGE_1 : string = "Aww (T-T). Checking-In was successful but I was unable to fetch the reward data"; 
     public static ERROR_CHECK_IN_MESSAGE_2 : string = "Aww (T-T). miHoYo refused me to check in. They reply with : \n";
 
 }

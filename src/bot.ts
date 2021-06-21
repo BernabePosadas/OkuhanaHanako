@@ -50,10 +50,13 @@ export class Hanako {
 
     }
     public async runGenshinCheckIn(){
-        let comm_login = new GenshinCommunityLogin();
-        let message = await comm_login.runCheckIn();
-        this.sendDM(String(TheWeebsDiscordID.bernabe), HanakoSpeech.CHECK_IN_MESSAGE_HEADER);
-        this.sendDM(String(TheWeebsDiscordID.bernabe), message);
+        let list = String(process.env.GENSHIN_COOKIE).split("#");
+        for(let i = 0; i < list.length; i+=2){
+            let comm_login = new GenshinCommunityLogin(list[i + 1]);
+            let message = await comm_login.runCheckIn();
+            await this.sendDM(list[i], HanakoSpeech.CHECK_IN_MESSAGE_HEADER);
+            await this.sendDM(list[i], message);
+        }
     }
     private listenToSystemEvents() {
         this._client.on("guildMemberAdd", member => {

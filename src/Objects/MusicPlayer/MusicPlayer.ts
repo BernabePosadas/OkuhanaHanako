@@ -27,7 +27,7 @@ export class MusicPlayer implements IMusicPlayer {
     public async addToQueue(song: MusicPlayItem): Promise<boolean> {
         try {
             if (this._player_status === MusicPlayerStatus.IDLE) {
-                var play_item: IMusicPlaylist = new YoutubeMusicPlaylist(song);
+                var play_item: IMusicPlaylist = new YoutubeMusicPlaylist(song, 1);
                 this._now_playing = play_item;
                 this._player_status = MusicPlayerStatus.LOCKED;
                 this._prevent_worker = true;
@@ -154,6 +154,9 @@ export class MusicPlayer implements IMusicPlayer {
             return true;
         }
         return false;
+    }
+    public printList(): string | undefined{
+        return this._now_playing?.printList();
     }
     private removeAnnounceMessage() {
         if (!this._now_playing?._song_data.anounce_message?.deleted) {

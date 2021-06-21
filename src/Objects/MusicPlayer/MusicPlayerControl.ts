@@ -136,6 +136,9 @@ export class MusicPlayerControl implements IMusicControl {
                         if (player_instance._now_playing !== undefined)
                             player_instance._now_playing._song_data = this.setPlayItemBanner("#0099FF", "Now Playing " + this.checkIfRepeatIsOn(player_instance), player_instance._now_playing?._song_data, player_instance._now_playing?._song_data.anounce_message);
                         break;
+                    case "playlist" : 
+                        msg.channel.send("```Music Playlist: \n\n" + player_instance.printList() + "```");
+                        break;
                     default:
                         throw new Error("to_handle value is invalid").stack;
                 }
