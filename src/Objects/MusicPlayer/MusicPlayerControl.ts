@@ -57,6 +57,9 @@ export class MusicPlayerControl implements IMusicControl {
         }
         try {
             var song_info = await ytdl.getInfo(args);
+            if(song_info === undefined){
+                msg.reply("Unable to parse the youtube video provided :("); 
+            }
             var play_item: MusicPlayItem = {
                 title: song_info.player_response.videoDetails.title,
                 youtube_link: song_info.videoDetails.video_url,
@@ -215,7 +218,9 @@ export class MusicPlayerControl implements IMusicControl {
                 throw new Error("player_instance is undefined").stack;
             }
         }
-        throw new Error("msg.guild is undefined").stack;
+        else{
+            throw new Error("msg.guild is undefined").stack;
+        }
     }
     private checkIfRepeatIsOn(player_instance: IMusicPlayer): string {
         if (player_instance._repeat) {

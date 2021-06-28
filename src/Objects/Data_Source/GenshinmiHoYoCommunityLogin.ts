@@ -11,6 +11,8 @@ export class GenshinCommunityLogin{
         this.header.Cookie  = cookie;
     }
     async runCheckIn() : Promise<string>{
+        let sleep_interval : number = Math.floor(Math.random() * 120000) // 2min ran sleep range 
+        await this.sleep(sleep_interval);
         let response = await fetch(`https://hk4e-api-os.mihoyo.com/event/sol/sign?lang=en-us`, { method: 'post', headers: this.header, body : JSON.stringify({'act_id' : process.env.GENSHIN_ACT_ID})}).then(checkError).then((response) => response.json());
         if(response.retcode === 0) {
             if(await this.getRewardsInfo()){
@@ -49,5 +51,8 @@ export class GenshinCommunityLogin{
         else{
                 return false
         }
+    }
+    private sleep(ms : number){
+        return new Promise( resolve => setTimeout(resolve, ms));
     }
 }

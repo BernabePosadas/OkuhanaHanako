@@ -16,6 +16,7 @@ let bot = container.get<Hanako>(TYPES.Hanako);
 
 bot.start().then(() => {
   console.log('<placeholder for start speech>');
+
   // Express.js Starts Here 
 
   //region middleware
@@ -33,7 +34,7 @@ bot.start().then(() => {
   console.log('Hanako scrapped her knee: ', error);
 });
 
-schedule.scheduleJob('0 4 * * *', function() {
+schedule.scheduleJob(String(process.env.AUTO_CHECKIN_TIME_RULE), function() {
   bot.runGenshinCheckIn();
 });
 
