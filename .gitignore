@@ -1,0 +1,4 @@
+/node_modules
+bin
+.env
+/logs/exception_stack_trace.txt
